@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DynamicElementsStorage">
+    <option name="containingClasses">
+      <map>
+        <entry key="wordwrap.TextSpec">
+          <value>
+            <DClassElement>
+              <option name="name" value="wordwrap.TextSpec" />
+              <option name="myName" value="wordwrap.TextSpec" />
+              <option name="myProperties">
+                <set>
+                  <DPropertyElement>
+                    <option name="name" value="columnWidth" />
+                    <option name="type" value="java.lang.Integer" />
+                    <option name="myType" value="java.lang.Integer" />
+                    <option name="myStatic" value="false" />
+                    <option name="myName" value="columnWidth" />
+                  </DPropertyElement>
+                  <DPropertyElement>
+                    <option name="name" value="input" />
+                    <option name="type" value="java.lang.String" />
+                    <option name="myType" value="java.lang.String" />
+                    <option name="myStatic" value="false" />
+                    <option name="myName" value="input" />
+                  </DPropertyElement>
+                  <DPropertyElement>
+                    <option name="name" value="output" />
+                    <option name="type" value="java.lang.String" />
+                    <option name="myType" value="java.lang.String" />
+                    <option name="myStatic" value="false" />
+                    <option name="myName" value="output" />
+                  </DPropertyElement>
+                </set>
+              </option>
+            </DClassElement>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
+
