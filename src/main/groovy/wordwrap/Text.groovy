@@ -11,7 +11,7 @@ class Text {
 }
 
 @Immutable
-static class Wrapper {
+class Wrapper {
   int maxWidth
 
   String wrap(String input) {
