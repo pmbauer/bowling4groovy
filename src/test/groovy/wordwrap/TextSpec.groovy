@@ -3,7 +3,7 @@ package wordwrap
 import spock.lang.Specification
 
 class TextSpec extends Specification {
-  def "Wrap fixtures"(){
+  def "Wrap fixtures"() {
     expect:
     output == Text.wrap(input, columnWidth)
 

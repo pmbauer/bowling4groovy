@@ -2,7 +2,7 @@ package bowling
 
 class Game {
   private def rolls = new int[21]
-  private int rollIdx = 0;
+  private int rollIdx = 0
 
   def roll(int pins) {
     rolls[rollIdx++] = pins
@@ -10,7 +10,7 @@ class Game {
 
   def getScore() {
     int sum = 0
-    int frameIdx = 0;
+    int frameIdx = 0
 
     (0..<10).each {
       if (isStrike(frameIdx)) {
@@ -20,7 +20,7 @@ class Game {
         sum += 10 + spareBonus(frameIdx)
         frameIdx += 2
       } else {
-        sum += frameScore(frameIdx);
+        sum += frameScore(frameIdx)
         frameIdx += 2
       }
     }

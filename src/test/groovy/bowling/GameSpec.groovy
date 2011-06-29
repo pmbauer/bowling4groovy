@@ -59,8 +59,7 @@ class GameSpec extends Specification {
   }
 
   private rollSpare() {
-    game.roll(5);
-    game.roll(5);
+    2.times { game.roll(5) }
   }
 }
 
