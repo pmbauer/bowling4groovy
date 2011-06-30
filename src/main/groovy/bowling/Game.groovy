@@ -8,6 +8,10 @@ class Game {
     rolls[rollIdx++] = pins
   }
 
+  def roll(int... rolls) {
+    rolls.each { roll(it) }
+  }
+
   def getScore() {
     int sum = 0
     int frameIdx = 0

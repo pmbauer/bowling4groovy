@@ -3,63 +3,43 @@ package bowling
 import spock.lang.Specification
 
 class GameSpec extends Specification {
-  def game = new Game();
+  def "Game fixtures"() {
+    expect:
+    score == rolls.playGame(description).score
 
-  def "test gutter game"() {
-    when:
-    rollMany(20, 0)
-
-    then:
-    0 == game.score
+    where:
+    description    | rolls                              | score
+    "gutter game"  | roll.many(20,0)                    | 0
+    "all ones"     | roll.many(20,1)                    | 20
+    "one spare"    | roll.spare().once(3).many(17,0)    | 16
+    "one strike"   | roll.strike().once(3,4).many(16,0) | 24
+    "perfect game" | roll.many(12,10)                   | 300
   }
 
-  def "test all ones"() {
-    when:
-    rollMany(20, 1)
-
-    then:
-    20 == game.score
+  RollCollector getRoll() {
+    new RollCollector()
   }
 
-  def "test one spare"() {
-    when:
-    rollSpare()
-    game.roll(3)
-    rollMany(17, 0)
+  class RollCollector {
+    private def _rolls = []
+    private Game game = new Game()
 
-    then:
-    16 == game.score
-  }
+    RollCollector once(int... rolls) {
+      _rolls.addAll(rolls)
+      return this
+    }
 
-  def "test one strike"() {
-    when:
-    rollStrike()
-    game.roll(3)
-    game.roll(4)
-    rollMany(16,0)
+    RollCollector strike() { once(10) }
+    RollCollector spare() { once(5, 5) }
 
-    then:
-    24 == game.score
-  }
+    RollCollector many(int n, int pins) {
+      once((0..<n).collect {pins} as int[])
+    }
 
-  def "test perfect game"() {
-    when:
-    rollMany(12,10)
-
-    then:
-    300 == game.score
-  }
-
-  private rollMany(int n, int pins) {
-    (0..<n).each { game.roll(pins) }
-  }
-
-  private rollStrike() {
-    return game.roll(10)
-  }
-
-  private rollSpare() {
-    2.times { game.roll(5) }
+    Game playGame(String description) {
+      game.roll(_rolls as int[])
+      return game
+    }
   }
 }
 
