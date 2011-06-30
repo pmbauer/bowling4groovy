@@ -4,12 +4,14 @@ class Game {
   private def rolls = new int[21]
   private int rollIdx = 0
 
-  def roll(int pins) {
+  Game roll(int pins) {
     rolls[rollIdx++] = pins
+    this
   }
 
-  def roll(int... rolls) {
+  Game roll(int... rolls) {
     rolls.each { roll(it) }
+    this
   }
 
   def getScore() {
@@ -32,23 +34,13 @@ class Game {
     return sum
   }
 
-  private int frameScore(int frameIdx) {
-    return rolls[frameIdx] + rolls[frameIdx + 1]
-  }
+  private int frameScore(int frameIdx) { rolls[frameIdx] + rolls[frameIdx + 1] }
 
-  private int strikeBonus(int frameIdx) {
-    return rolls[frameIdx + 1] + rolls[frameIdx + 2]
-  }
+  private int strikeBonus(int frameIdx) { rolls[frameIdx + 1] + rolls[frameIdx + 2] }
 
-  private int spareBonus(int frameIdx) {
-    return rolls[frameIdx + 2]
-  }
+  private int spareBonus(int frameIdx) { rolls[frameIdx + 2] }
 
-  private boolean isStrike(int frameIdx) {
-    return rolls[frameIdx] == 10
-  }
+  private boolean isStrike(int frameIdx) { rolls[frameIdx] == 10 }
 
-  private boolean isSpare(int frameIdx) {
-    return rolls[frameIdx] + rolls[frameIdx + 1] == 10
-  }
+  private boolean isSpare(int frameIdx) { rolls[frameIdx] + rolls[frameIdx + 1] == 10 }
 }

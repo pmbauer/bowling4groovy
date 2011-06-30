@@ -19,25 +19,21 @@ class GameSpec extends Specification {
   RollCollector getRoll() {
     new RollCollector()
   }
-
 }
 
 class RollCollector {
-  private def _rolls = []
+  private def rolls = []
   private Game game = new Game()
 
   RollCollector once(int... rolls) {
-    _rolls.addAll(rolls)
+    this.rolls.addAll(rolls)
     return this
   }
 
+  RollCollector once(List rolls) { once(rolls as int[]) }
   RollCollector strike() { once(10) }
   RollCollector spare() { once(5, 5) }
-  RollCollector many(int n, int pins) { once((0..<n).collect {pins} as int[]) }
+  RollCollector many(int n, int pins) { once((0..<n).collect {pins}) }
 
-  Game playGame(String description) {
-    game.roll(_rolls as int[])
-    return game
-  }
+  Game playGame(String description) { game.roll(rolls as int[]) }
 }
-
